@@ -8,6 +8,7 @@ const home = () => import('view/home/home.vue')
 const category = () => import('view/category/category.vue')
 const cart = () => import('view/cart/cart.vue')
 const profile = () => import('view/profile/profile.vue')
+const goods = () => import('view/goods/goods.vue')
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
     path: '/category',
     name: 'category',
     component: category
+  },
+  {
+    path: '/goods',
+    name: 'goods',
+    component: goods
   },
   {
     path: '/cart',

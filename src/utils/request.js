@@ -5,9 +5,13 @@ import { getToken } from 'utils'
 
 import router from '../router'
 
+  // baseURL:'http://106.52.36.53:8100/admin', 腾讯云的后台
+  // baseURL:'http://admin-api.macrozheng.com', 原创人后台
+
+const domain = 'http://www.pride.demo.com/'
+
 const request = axios.create({
-  // baseURL:'http://106.52.36.53:8100/admin',
-  baseURL:'http://admin-api.macrozheng.com',
+  baseURL: `${domain}api/tiny-shop/v1`,
   timeout: 1000
 })
 
@@ -24,7 +28,7 @@ request.interceptors.response.use(res => {
     router.push('/login')
   }
   if(res.data.code == 200){
-    return res.data.data
+    return res.data
   }else{
     Notify(res.data.message)
   }

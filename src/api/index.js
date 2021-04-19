@@ -1,50 +1,69 @@
 import request from 'utils/request'
 
-// 登陆
-export function login (data) {
+/** 
+ * 用户模块api
+*/
+
+// 获取验证码
+export function sendSmsCode(mobile){
   return request({
-    method: 'post',
-    url: '/admin/login',
-    data
+    method:'post',
+    url: '/site/sms-code',
+    data:{
+      usage: "register",
+      mobile
+    }
   })
 }
 
 // 注册
 export function register(data){
   return request({
-    mothod:'post',
-    url: '/admin/register',
+    method:'post',
+    url: '/site/register',
+    data
+  })
+}
+
+// 登陆
+export function login (data) {
+  return request({
+    method: 'post',
+    url: '/site/login',
     data
   })
 }
 
 
-/*
-**  首页相关api
+/** 
+ * 首页api
 */
-
-// 轮播图
-export function getHomeSwiper(){
+export function getHomeData () {
   return request({
-    method:'get',
-    url:'/home/advertise/list'
-  })
-}
-// 品牌导航
-export function getHomeNav(){
-  return request({
-    method:'get',
-    url:'/brand/list',
-    params:{pageSize:10}
+    method: 'get',
+    url: '/index/index'
   })
 }
 
 
-// 商品列表
-export function getGoodsList(params){
+/** 
+ * 分类api
+*/
+export function getCategory () {
   return request({
-    method:'get',
-    url:'/product/list',
+    method: 'get',
+    url: '/product/cate/index'
+  })
+}
+
+
+/** 
+ * 商品列表
+*/
+export function getGoodsList (params) {
+  return request({
+    method: 'get',
+    url: '/product/product/index',
     params
   })
 }

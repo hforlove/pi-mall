@@ -1,9 +1,13 @@
 <template>
   <ul class="home_Nav">
-    <li v-for="item in list" :key="item.id">
+    <li
+      v-for="item in list"
+      :key="item.id"
+      @click="$router.push(`/goods?cate=${item.id}`)"
+    >
       <div>
-        <img :src="item.logo" />
-        {{item.name}}
+        <img :src="item.cover" />
+        {{item.title}}
       </div>
     </li>
   </ul>

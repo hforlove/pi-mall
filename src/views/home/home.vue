@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <van-nav-bar title="PI 商城" fixed>
+    <van-nav-bar title="PI 商城" fixed  @click-right="$router.push('/goods')">
       <template #right>
         <van-icon name="search" size="18" />
       </template>
@@ -9,8 +9,9 @@
       <Swiper :list="swiperList" />
     </div>
     <home-nav :list="navList" />
-    <home-goods title="新品推荐" :list="newList" />
-    <home-goods title="人气推荐" :list="hotList" />
+    <home-goods title="新品" :list="newList" />
+    <home-goods title="热门" :list="hotList" />
+    <home-goods title="推荐" :list="recommenList" />
   </div>
 </template>
 
@@ -20,7 +21,7 @@ import Swiper from 'comp/Swiper'
 import HomeNav from './HomeNav'
 import HomeGoods from './HomeGoods'
 
-import { getHomeSwiper, getHomeNav, getGoodsList } from 'api'
+import { getHomeData } from 'api'
 
 export default {
   name: 'home',
@@ -30,21 +31,19 @@ export default {
       swiperList:[],
       navList:[],
       newList:[],
-      hostList:[]
+      hotList:[],
+      recommenList:[]
     }
   },
   created(){
-    getHomeSwiper().then(res=>{
-      this.swiperList = res.list
-    })
-    getHomeNav().then(res=>{
-      this.navList = res.list
-    })
-    getGoodsList({pageNum:1,pageSize:6}).then(res=>{
-      this.newList = res.list
-    })
-    getGoodsList({pageNum:2,pageSize:6}).then(res=>{
-      this.hotList = res.list
+    getHomeData().then(res=>{
+      const data = res.data
+      this.swiperList = data.adv.index_top
+      this.navList = data.cate
+      this.newList = data.product_new
+      this.hotList = data.product_hot
+      this.recommenList = data.product_recommend
+      this.$store.commit('initHotSearch',data.search.hot_search_list)
     })
   }
 }
