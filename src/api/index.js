@@ -35,9 +35,9 @@ export function login (data) {
 }
 
 
-/** 
- * 首页api
-*/
+
+
+// 首页数据
 export function getHomeData () {
   return request({
     method: 'get',
@@ -46,9 +46,7 @@ export function getHomeData () {
 }
 
 
-/** 
- * 分类api
-*/
+// 分类
 export function getCategory () {
   return request({
     method: 'get',
@@ -56,10 +54,16 @@ export function getCategory () {
   })
 }
 
+// 品牌
+export function getBrand () {
+  return request({
+    method: 'get',
+    url: '/product/brand/index'
+  })
+}
 
-/** 
- * 商品列表
-*/
+
+// 商品列表
 export function getGoodsList (params) {
   return request({
     method: 'get',

@@ -1,7 +1,7 @@
 <template>
   <div class="main">
 
-    <goods-search
+    <goods-list-search
       v-show="searchShow"
       @onSearch="searchGoods"
       @onBack="backBySearch"
@@ -19,6 +19,13 @@
       </template>
     </van-nav-bar>
 
+    <goods-list-sort
+      ref="goodsListSort"
+      class="goods-sort"
+      @showFilter="filterShow=true"
+      @sort="sortGoods"
+    />
+
     <van-list
       v-model="loading"
       finished-text="没有更多了"
@@ -27,24 +34,30 @@
       :finished="finished"
       @load="onLoad"
     >
-      <goods-item
+      <goods-list-item
         v-for="item in goodsList"
         :key="item.id"
         :goods="item"
       />
     </van-list>
+
+    <goods-list-filter v-model="filterShow" @filter="filterGoods" />
+
   </div>
 </template>
 
 <script>
-import GoodsSearch from './GoodsSearch'
-import GoodsItem from './GoodsItem'
+import GoodsListSearch from './GoodsListSearch'
+import GoodsListItem from './GoodsListItem'
+import GoodsListSort from './GoodsListSort'
+import GoodsListFilter from './GoodsListFilter'
 import { getGoodsList } from 'api'
 export default {
   name: 'goods',
-  components: { GoodsSearch, GoodsItem },
+  components: { GoodsListSearch, GoodsListItem, GoodsListSort, GoodsListFilter },
   data() {
     return {
+      filterShow:false,
       searchShow:true,
       loading:false,
       finished: false,
@@ -56,6 +69,7 @@ export default {
         page: 1,
         cate_id: ''
       },
+      orderQuery:{},
       goodsList:[]
     }
   },
@@ -68,20 +82,33 @@ export default {
     this.getGoodsList()
   },
   methods:{
-    backBySearch(){ //返回上一层
+    backBySearch(){ // 返回上一层
       if(this.back){
         this.$router.go(-1)
       }else{
         this.searchShow = false
       }
     },
-    showSearch(){
+    showSearch(){ // 搜索弹窗
       this.back = false
       this.searchShow = true
       this.$refs.goodsSearch.focus()
     },
-    searchGoods(keyword){
+    searchGoods(keyword){ // 点击搜索
       this.query.keyword = keyword
+      this.resetQuery()
+    },
+    sortGoods(params){  // 排序
+      this.orderQuery = params
+      this.resetQuery()
+    },
+    filterGoods(params){  //筛选
+      this.filterShow = false
+      this.orderQuery = params
+      this.$refs.goodsListSort.reset()
+      this.resetQuery()
+    },
+    resetQuery(){ // 重置初始化
       this.query.page = 1
       this.searchShow = false
       this.finished = false
@@ -89,9 +116,13 @@ export default {
       this.goodsList = []
       this.getGoodsList()
     },
-    getGoodsList(){
+    getGoodsList(){ // 商品列表
       this.loading = true
-      getGoodsList(this.query).then(res=>{
+      const params = {
+        ...this.query,
+        ...this.orderQuery
+      }
+      getGoodsList(params).then(res=>{
         this.loading = false
         this.goodsList.push(...res.data)
         if(res.data.length<12){
@@ -100,7 +131,7 @@ export default {
         }
       })
     },
-    onLoad(){
+    onLoad(){ //加载更多
       if(this.nextPage){
         this.query.page++
         this.getGoodsList()
@@ -116,6 +147,14 @@ export default {
   background: #fff;
   z-index: 9;
   padding-bottom: 0;
+  padding-top: 96px;
   min-height: 100vh;
+}
+.goods-sort{
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  top: 46px;
+  z-index: 2;
 }
 </style>
