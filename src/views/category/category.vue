@@ -1,10 +1,12 @@
 <template>
     <div class="main">
-      <van-nav-bar title="PI 商城" left-arrow fixed  @click-right="$router.push('/goods')">
+      
+      <nav-bar title="分类">
         <template #right>
-          <van-icon name="search" size="18" />
+          <van-icon @click="$router.push('/goods')" name="search" size="18" />
         </template>
-      </van-nav-bar>
+      </nav-bar>
+
       <div class="category">
         <div class="cate-left">
           <scroll ref="parentScroll">

@@ -4,10 +4,77 @@ div,ul,li,p,h1,h2,h3,h4,h5{
 	box-sizing: border-box;
 }
 
+.red{
+	color: @red;
+}
 .main{
 	padding-top: @barH;
 	padding-bottom: @bottomH;
+	background: #fff;
+	position: relative;
+	min-height: 100vh;
+}
+.main-top{
+	padding-top: @barH;
+	background: #fff;
+	position: relative;
+	z-index: 2;
+	min-height: 100vh;
 }
 .van-nav-bar__content{
 	overflow: hidden;
+}
+.van-nav-bar .van-icon{
+	color: @gray !important;
+	font-size: 18px !important;
+}
+
+// loading
+.loader {
+	width: 100vw;
+	height: 100vh;
+	padding-bottom: 20vh;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	background: #fff;
+}
+@-webkit-keyframes loader26 {
+	25% {
+		-webkit-transform: rotateX(180deg) rotateY(0deg);
+	}
+	50% {
+		-webkit-transform: rotateX(180deg) rotateY(180deg);
+	}
+	75% {
+		-webkit-transform: rotateX(0deg) rotateY(180deg);
+	}
+	100% {
+		-webkit-transform: rotateX(0deg) rotateY(0deg);
+	}
+}
+.loader-26 {
+	width: 70px;
+	height: 70px;
+	-webkit-perspective: 100px;
+}
+.loader-26 div {
+	width: 70px;
+	height: 70px;
+	background: @red;
+	-webkit-animation: loader26 2s ease-in-out infinite;
+}
+
+.fade-enter-active {
+  transition: all 0s ease;
+}
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .slide-fade-leave-to{
+  opacity: 0;
 }

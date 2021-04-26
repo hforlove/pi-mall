@@ -1,5 +1,5 @@
 <template>
-  <div class="goods" @click="$router.push({name:'goodsDetail',params:{id:goods.id}})">
+  <div class="goods" @click="$router.push(`/detail?id=${goods.id}`)">
     <img :src="goods.picture" alt="">
     <p>{{goods.name}}</p>
     <span>￥{{goods.price}}</span>

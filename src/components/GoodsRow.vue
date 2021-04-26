@@ -1,13 +1,15 @@
 <template>
   <div class="goods-row">
     <div class="img">
-      <img :src="goods.picture" />
+      <img :src="pic" />
     </div>
     <div class="cont">
-      <h3 class="top">{{goods.name}}</h3>
-      <div class="mid"><slot name="m"></slot></div>
+      <h3 class="top">{{name}}</h3>
+      <div class="mid van-ellipsis">
+        <slot name="m">{{sku}}</slot>
+      </div>
       <div class="bottom">
-        ￥{{goods.price}}
+        ￥{{price}}
         <div class="br"><slot name="br"></slot></div>
       </div>
     </div>
@@ -18,11 +20,21 @@
 export default {
   name: 'GoodsRow',
   props:{
-    goods:{
-      type:Object,
-      default(){
-        return {}
-      }
+    pic:{
+      type: String,
+      default: ''
+    },
+    name:{
+      type: String,
+      default: ''
+    },
+    price:{
+      type: [String, Number],
+      default: ''
+    },
+    sku:{
+      type: String,
+      default: ''
     }
   }
 }
@@ -63,8 +75,10 @@ export default {
     }
     .mid{
       height: 26px;
-      line-height: 18px;
+      line-height: 22px;
       overflow: hidden;
+      font-size: 12px;
+      color: @gray;
     }
     .bottom{
       font-size: 14px;
@@ -74,6 +88,8 @@ export default {
         position: absolute;
         right: 0;
         bottom: 0;
+        font-size: 12px;
+        color: @gray;
       }
     }
   }

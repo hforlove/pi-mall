@@ -1,10 +1,15 @@
 <template>
-  <goods-row :goods="goods">
+  <goods-row
+  :pic="goods.picture"
+  :name="goods.name"
+  :price="goods.price"
+  @click.native="$router.push(`/detail?id=${goods.id}`)"
+  >
     <template v-slot:m>
-      <span class="sketch">{{goods.sketch}}</span>
+      <span>{{goods.sketch}}</span>
     </template>
     <template v-slot:br>
-      <div class="sales">已售 {{goods.total_sales}}<br />库存 {{goods.stock}}</div>
+      已售 {{goods.total_sales}}<br />库存 {{goods.stock}}
     </template>
   </goods-row>
 </template>
@@ -26,12 +31,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.sketch{
-  font-size: 12px;
-  color: @gray;
-}
-.sales{
-  color: @gray;
-  font-size: 12px;
-}
+
 </style>

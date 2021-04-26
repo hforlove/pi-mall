@@ -1,11 +1,11 @@
 <template>
   <div class="main">
 
-    <van-nav-bar title="PI 商城" fixed  @click-right="$router.push('/goods')">
+    <nav-bar title="PI 商城" :show-left="false">
       <template #right>
-        <van-icon name="search" size="18" />
+        <van-icon @click="$router.push('/goods')" name="search" size="18" />
       </template>
-    </van-nav-bar>
+    </nav-bar>
 
     <div class="swiper_wrap">
       <Swiper :list="swiperList" />
@@ -18,6 +18,7 @@
     <home-goods title="新品" :list="newList" />
     <home-goods title="热门" :list="hotList" />
     <home-goods title="推荐" :list="recommenList" />
+
   </div>
 </template>
 

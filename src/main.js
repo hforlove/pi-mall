@@ -8,10 +8,14 @@ import 'normalize.css/normalize.css'
 import 'asset/styles/common.less'
 import 'amfe-flexible'
 
+import NavBar from 'comp/NavBar'
+
 import Vant from 'vant'
 import 'vant/lib/index.css'
 
 Vue.use(Vant)
+
+Vue.component('NavBar', NavBar)
 
 Vue.prototype.rules=rules
 

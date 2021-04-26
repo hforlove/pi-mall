@@ -40,8 +40,9 @@ export default {
   methods:{
     login(params){  //登陆
       login(params).then(res=>{
-        this.$toast.success('登陆成功')
         setToken(res.data.access_token)
+        this.$toast.success('登陆成功')
+        this.$store.commit('setUserInfo',res.data.member)
         this.$router.push('/home')
       })
     },
@@ -79,7 +80,7 @@ export default {
     font-size: 24px;
     position: absolute;
     left: 20px;
-    bottom: 40px;
+    bottom: 50px;
   }
   .logo{
     width: 140px;

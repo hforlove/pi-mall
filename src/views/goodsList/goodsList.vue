@@ -143,12 +143,9 @@ export default {
 
 <style lang="less" scoped>
 .main{
-  position: relative;
-  background: #fff;
   z-index: 9;
   padding-bottom: 0;
   padding-top: 96px;
-  min-height: 100vh;
 }
 .goods-sort{
   position: fixed;
