@@ -3,14 +3,14 @@
     <router-view />
     <tab-bar v-show="showTabBar" />
     
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div v-show="$store.state.loading" class="loader26 loader">
         <div class="loader-26">
           <div>
           </div>
         </div>
       </div>
-    </transition>
+    </transition> -->
     
   </div>
 </template>

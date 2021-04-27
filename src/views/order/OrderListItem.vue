@@ -12,6 +12,7 @@
         :pic="item.product_picture"
         :name="item.product_name"
         :sku="item.sku_name"
+        @click.native="$router.push(`/detail?id=${item.product_id}`)"
       >
         <template #br>
           x{{item.num}}

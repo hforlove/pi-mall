@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <div class="setting" @click="show = true"><van-icon name="setting-o" /></div>
     <div class="profile-bg">
       <div class="info">
         <div class="img">
@@ -16,18 +17,25 @@
       class="profile-cont"
     />
   
+    <van-popup v-model="show" position="bottom" :style="{ height: '30%' }">
+      <div class="popup-setting">
+        <van-button block round type="danger" @click="logout">退出登录</van-button>
+      </div>
+    </van-popup>
+
   </div>
 </template>
 
 <script>
 import ProfileItem from './ProfileItem'
-import { getUserDetail } from 'api'
+import { getUserDetail, logout } from 'api'
+import { removeToken } from 'utils'
 export default {
   name: 'profile',
   components: { ProfileItem },
   data() {
     return {
-      show: true,
+      show: false,
       userInfo:{}
     }
   },
@@ -36,6 +44,14 @@ export default {
       res.data.account.coupon_num = res.data.coupon_num
       this.userInfo = res.data
     })
+  },
+  methods: {
+    logout() {
+      logout().then(res=>{
+        removeToken()
+        this.$router.push('/login')
+      })
+    }
   }
 }
 </script>
@@ -43,6 +59,20 @@ export default {
 <style lang="less" scoped>
 .main{
   padding-top: 0;
+  position: relative;
+}
+.setting{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9;
+  color: #fff;
+}
+.popup-setting{
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 .profile-bg{
   height: 220px;

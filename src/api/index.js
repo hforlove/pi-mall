@@ -34,6 +34,14 @@ export function login (data) {
   })
 }
 
+// 登出
+export function logout () {
+  return request({
+    method: 'post',
+    url: '/site/logout',
+  })
+}
+
 
 
 
@@ -102,11 +110,11 @@ export function getCart () {
 export function getCartNum () {
   return request({
     method: 'get',
-    url: '/member/cart-item/count'
+    url: '/member/cart-item/count',
   })
 }
 
-// 购物车数量
+// 更新购物车数量
 export function updateCart (data) {
   return request({
     method: 'post',
@@ -115,7 +123,7 @@ export function updateCart (data) {
   })
 }
 
-// 购物车数量
+// 删除购物车
 export function deleteCart (data) {
   return request({
     method: 'post',
@@ -142,7 +150,7 @@ export function createOrder (data) {
   })
 }
 
-// 创建订单
+// 支付时的订单详情
 export function getOrderByPay (params) {
   return request({
     method: 'get',
