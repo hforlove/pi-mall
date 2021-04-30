@@ -1,3 +1,10 @@
+
+// const host = 'http://www.pride.demo.com/'
+// const host = 'https://pride.test.utools.club/'
+// const host = 'http://localhost:8000/'  
+const host = 'https://pridewu.cn1.utools.club/'
+const imgHost = 'http://www.pride.demo.com/'
+
 const orderStatus = {
    '0': '待付款' ,
    '1': '待发货' ,
@@ -15,5 +22,7 @@ const orderStatus = {
 }
 
 export {
+  host,
+  imgHost,
   orderStatus
 }

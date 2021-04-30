@@ -1,19 +1,15 @@
 import axios from 'axios'
 
 import { Notify } from 'vant'
-import { getToken } from 'utils'
+import { getToken } from './index'
+import { host } from './config'
 
 import router from '../router'
 
 import store from '../store'
 
-  // baseURL:'http://106.52.36.53:8100/admin', 腾讯云的后台
-  // baseURL:'http://admin-api.macrozheng.com', 原创人后台
-
-const domain = 'http://www.pride.demo.com/'
-
 const request = axios.create({
-  baseURL: `${domain}api/tiny-shop/v1`,
+  baseURL: `${host}api/tiny-shop/v1`,
   timeout: 10000
 })
 

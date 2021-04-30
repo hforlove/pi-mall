@@ -68,7 +68,7 @@
 
 <script>
 import GoodsRow from 'comp/GoodsRow'
-import { orderStatus } from 'utils/constData.js'
+import { orderStatus } from 'utils/config'
 
 export default {
   name: 'OrderListItem',

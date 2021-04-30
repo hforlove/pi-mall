@@ -1,7 +1,7 @@
 <template>
   <div class="goods-row">
     <div class="img">
-      <img :src="pic" />
+      <img :src="pic | imgUrl" />
     </div>
     <div class="cont">
       <h3 class="top">{{name}}</h3>

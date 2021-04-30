@@ -4,7 +4,7 @@
     <div class="profile-bg">
       <div class="info">
         <div class="img">
-          <img :src="userInfo.head_portrait" />
+          <img :src="userInfo.head_portrait | imgUrl" />
         </div>
         <span>{{userInfo.nickname}}</span>
         <van-icon size="20" name="edit" @click="$router.push('/userInfo')" />

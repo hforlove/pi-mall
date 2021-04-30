@@ -3,7 +3,7 @@
     <div class="profile-bg">
       <van-icon class="back" name="arrow-left" @click="$router.go(-1)" />
       <div class="img">
-        <img :src="userInfo.head_portrait" />
+        <img :src="userInfo.head_portrait | imgUrl" />
       </div>
     </div>
 

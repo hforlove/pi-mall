@@ -118,7 +118,7 @@ export default {
 .main{
   z-index: 9;
   padding-bottom: 50px;
-  padding-top: 96px;
+  padding-top: 46px;
 }
 .detail{
   width: 100%;

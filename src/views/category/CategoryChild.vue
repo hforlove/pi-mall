@@ -7,7 +7,7 @@
         :key="item.id"
         @click="toGoods(item.id)"
       >
-        <div><img :src="item.cover" /></div>
+        <div><img :src="item.cover | imgUrl" /></div>
         <span>{{item.title}}</span>
       </li>
     </ul>

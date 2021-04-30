@@ -63,7 +63,7 @@
 import GoodsRow from 'comp/GoodsRow'
 import OrderAddress from './OrderAddress'
 import { getOrderDetail } from 'api'
-import { orderStatus } from 'utils/constData'
+import { orderStatus } from 'utils/config'
 export default {
   name: 'orderCreate',
   components: { GoodsRow, OrderAddress },

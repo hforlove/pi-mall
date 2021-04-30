@@ -6,7 +6,7 @@
       @click="$router.push(`/goods?cate=${item.id}`)"
     >
       <div>
-        <img :src="item.cover" />
+        <img :src="item.cover | imgUrl" />
         {{item.title}}
       </div>
     </li>

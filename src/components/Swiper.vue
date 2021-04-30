@@ -4,7 +4,7 @@
       v-for="item in list"
       :key="item.id"
     >
-      <img :src="item.cover" />
+      <img :src="item.cover | imgUrl" />
     </van-swipe-item>
   </van-swipe>
 </template>

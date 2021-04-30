@@ -1,6 +1,6 @@
 <template>
   <div class="goods" @click="$router.push(`/detail?id=${goods.id}`)">
-    <img :src="goods.picture" alt="">
+    <img :src="goods.picture | imgUrl" alt="">
     <p>{{goods.name}}</p>
     <span>￥{{goods.price}}</span>
   </div>
