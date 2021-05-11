@@ -128,14 +128,16 @@ export default {
       const list = []
       if(this.info?.sku?.length){
         this.info.sku.forEach(item=>{
-          const [val1, val2] = item.data.split('-')
-          const pid1 = attrs[val1], pid2 = attrs[val2]
+          const temp = {}
+          console.log(item.data);
+          item.data.split('-').forEach(item=>{
+            temp[attrs[item]] = item
+          })
           list.push({
             id: item.id,
-            [pid1]: val1,
-            [pid2]: val2,
             price: item.price*100,
-            stock_num: item.stock*1
+            stock_num: item.stock*1,
+            ...temp
           })
         })
       }
