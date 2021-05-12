@@ -166,6 +166,8 @@ export default {
     background-image: url('~asset/images/money-bg.png');
     background-size: 100% 100%;
     position: absolute;
+    top: 0;
+    left: 0;
   }
   .before{
     height: 100%;

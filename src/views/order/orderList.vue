@@ -67,7 +67,7 @@ export default {
       getOrder(this.query).then(res=>{
         this.loading = false
         this.orderList.push(...res.data)
-        if(res.data.length<12){
+        if(res.data.length<10){
           this.nextPage = false
           this.finished = true
         }

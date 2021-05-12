@@ -15,7 +15,7 @@
         :key="item.id"
         :pic="item.product_picture"
         :name="item.product_name"
-        :price="item.product_original_money"
+        :price="item.price"
         :sku="item.sku_name"
       >
         <template #br>
@@ -87,7 +87,7 @@ export default {
         if(this.source && orderPreview?.address?.mobile){
           this.address = { ...orderPreview.address }
         }else{
-          this.address = res.data.address
+          this.address = res.data.address || {}
           const tmp = {type:this.type,ids:this.ids}
           this.num && (tmp.num = this.num)
           this.$store.commit('setOrderPreview',tmp)

@@ -129,7 +129,6 @@ export default {
       if(this.info?.sku?.length){
         this.info.sku.forEach(item=>{
           const temp = {}
-          console.log(item.data);
           item.data.split('-').forEach(item=>{
             temp[attrs[item]] = item
           })
