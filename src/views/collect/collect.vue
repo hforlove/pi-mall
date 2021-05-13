@@ -47,7 +47,7 @@ export default {
       getCollection({page: this.page}).then(res=>{
         this.loading = false
         this.collectList.push(...res.data)
-        if(res.data.length<12){
+        if(res.data.length<10){
           this.nextPage = false
           this.finished = true
         }
